@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 4</title>
+    <style></style>
+  </head>
+  <body>
+    <h2 style="text-align: center">Vẽ tam giác bài 4</h2>
+    <div style="text-align: center">
+      <input id="myInput" value="" />
+      <button onclick="myFunction()">Vẽ</button>
+    </div>
+
+    <div style='text-align:center;' id="themVaoDay"></div>
+
+    <script>
+      function myFunction() {
+        var el_down = document.getElementById("themVaoDay");
+        var N = document.getElementById("myInput").value;
+        N = parseInt(N);
+        el_down.innerHTML = "";
+        for (i = 1; i <= N; i++) {
+          el_down.innerHTML+=i.toString().slice(-1);
+          for (j = i - 1; j >= 1; j--) {
+            el_down.innerHTML+=j.toString().slice(-1);
+          }
+          el_down.innerHTML+="<br/>";
+        }
+      }
+    </script>
+  </body>
+</html>
