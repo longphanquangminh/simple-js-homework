@@ -1,3 +1,5 @@
+### Mở command prompt trỏ vào thư mục bài 8 rồi gõ `npm i` để cài node_modules, cài xong hết 100% rồi mới mở web được. Các bước còn lại như `npm run` (mở web) và các thao tác khác có thể xem bên dưới.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
