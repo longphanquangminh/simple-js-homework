@@ -42,6 +42,7 @@
     <div id="showThongTin"></div>
     <button onclick="drawFunction()">Vẽ đồ thị</button>
     <br>
+    <br>
     <!-- <div>
         <table id="veDoThi">
         </table>
@@ -92,9 +93,17 @@
     //       giaTriInput +
     //       "</td></tr>";
     //   }
-    giaTriInput = document.getElementById(item).value + 100;
-      document.getElementById("veDoThi").innerHTML +=
-          "<div class='divTableRow'><div class='divTableCell'>"+item+"</div><div class='divTableCell'><span style='background-color:red; width:"+giaTriInput+"px; height:15px;'><span>"+document.getElementById(item).value+"%</span></span></div></div>";
+    if(document.getElementById(item).value=="" || document.getElementById(item).value<0 || document.getElementById(item).value>100 || isNaN(document.getElementById(item).value)){
+        giaTriInput = 0;
+        document.getElementById("veDoThi").innerHTML +=
+          "<div class='divTableRow'><div class='divTableCell'>"+item+"</div><div class='divTableCell'>Phải đúng dạng số và từ 0-100 nhé!</div>";
+    }
+    else{
+        giaTriInput = document.getElementById(item).value;
+        document.getElementById("veDoThi").innerHTML +=
+          "<div class='divTableRow'><div class='divTableCell' style='width:50px;'>"+item+"</div><div class='divTableCell'><div style='max-width:1300px;float:left;background-color:red; width:"+giaTriInput+"%; height:15px;'></div><span style='margin-left:10px;'>"+giaTriInput+"%</span></div></div>";
+    }
+      
       }
     </script>
   </body>
