@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bai 2</title>
+    <style>
+      .divTable {
+        display: table;
+        width: 100%;
+      }
+      .divTableRow {
+        display: table-row;
+      }
+      .divTableHeading {
+        background-color: #eee;
+        display: table-header-group;
+      }
+      .divTableCell,
+      .divTableHead {
+        border: 1px solid #999999;
+        display: table-cell;
+        padding: 3px 10px;
+      }
+      .divTableHeading {
+        background-color: #eee;
+        display: table-header-group;
+        font-weight: bold;
+      }
+      .divTableFoot {
+        background-color: #eee;
+        display: table-footer-group;
+        font-weight: bold;
+      }
+      .divTableBody {
+        display: table-row-group;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="showThongTin"></div>
+    <button onclick="drawFunction()">Vẽ đồ thị</button>
+    <br>
+    <!-- <div>
+        <table id="veDoThi">
+        </table>
+      </div> -->
+      <!-- style="border: 1px solid #000" -->
+    <div class="divTable">
+      <div class="divTableBody" id="veDoThi">
+        
+      </div>
+    </div>
+    <script>
+      let text = "";
+      var myArray = new Array();
+      myArray[0] = "Anh";
+      myArray[1] = "Phap";
+      myArray[2] = "Duc";
+      myArray[3] = "Nga";
+      myArray[4] = "Nhat";
+      myArray.forEach(showForm);
+
+      document.getElementById("showThongTin").innerHTML = text;
+
+      function showForm(item) {
+        text +=
+          "<label style='margin-right:10px;' for='" +
+          item +
+          "'>" +
+          item +
+          "</label><input type='" +
+          item +
+          "' id='" +
+          item +
+          "' name='" +
+          item +
+          "'><br><br>";
+      }
+      let textChart = "";
+      function drawFunction() {
+        document.getElementById("veDoThi").innerHTML = "";
+        myArray.forEach(showChart);
+        // document.getElementById("veDoThi").innerHTML = textChart;
+      }
+      function showChart(item) {
+    //     document.getElementById("veDoThi").innerHTML +=
+    //       "<tr><td>" +
+    //       item +
+    //       "</td><td>" +
+    //       giaTriInput +
+    //       "</td></tr>";
+    //   }
+    giaTriInput = document.getElementById(item).value + 100;
+      document.getElementById("veDoThi").innerHTML +=
+          "<div class='divTableRow'><div class='divTableCell'>"+item+"</div><div class='divTableCell'><span style='background-color:red; width:"+giaTriInput+"px; height:15px;'><span>"+document.getElementById(item).value+"%</span></span></div></div>";
+      }
+    </script>
+  </body>
+</html>
