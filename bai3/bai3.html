@@ -10,14 +10,14 @@
   <body>
     <div class="container">
       <h1 class="timer">
-        <span class="minutes">00</span>: <span class="seconds">00</span>.
-        <span class="milliseconds">0</span>
+        <span class="minutes">00</span>:<span class="seconds">00</span>.<span
+          class="milliseconds"
+          >0</span
+        >
       </h1>
-      <ol class="lapContainer"></ol>
       <div class="bottomPart">
         <div class="btns">
           <button class="toggle">Bat dau</button>
-          <button class="lap">Dung lai</button>
           <button class="reset">Reset</button>
         </div>
       </div>
@@ -28,16 +28,6 @@
       var time = 0;
       var offset;
       var interval;
-
-      function lapOn() {
-        var lapTime = lapContainer.appendChild(document.createElement("li"));
-        lapTime.innerHTML = elem.textContent;
-        lapTime.classList = "lapItem";
-      }
-
-      function lapOff() {
-        return;
-      }
 
       function update() {
         if (this.isOn) {
@@ -74,7 +64,7 @@
           milliseconds = "0" + milliseconds;
         }
 
-        var result = minutes + " : " + seconds + " . " + milliseconds;
+        var result = minutes + ":" + seconds + "." + milliseconds.toString()[0];
 
         return result;
       }
@@ -93,18 +83,9 @@
 
       this.reset = function () {
         time = 0;
-        lapContainer.innerHTML = "";
         interval = null;
         this.isOn = false;
         update();
-      };
-
-      this.lapOn = function () {
-        lapOn();
-      };
-
-      this.lapOff = function () {
-        lapOff();
       };
 
       this.isOn = false;
@@ -113,25 +94,23 @@
     var timer = document.querySelector(".timer");
     var toggleBtn = document.querySelector(".toggle");
     var resetBtn = document.querySelector(".reset");
-    var lapBtn = document.querySelector(".lap");
-    var lapContainer = document.querySelector(".lapContainer");
 
     var watch = new Stopwatch(timer);
 
     function start() {
-      toggleBtn.textContent = "Stop";
+      toggleBtn.textContent = "Dung lai";
       toggleBtn.classList.toggle("on");
       watch.start();
     }
 
     function stop() {
-      toggleBtn.textContent = "Start";
+      toggleBtn.textContent = "Bat dau";
       toggleBtn.classList.toggle("on");
       watch.stop();
     }
 
     function stopWhenOn() {
-      toggleBtn.textContent = "Start";
+      toggleBtn.textContent = "Bat dau";
       toggleBtn.classList.toggle("on");
       watch.stop();
       watch.reset();
@@ -143,10 +122,6 @@
 
     resetBtn.addEventListener("click", function () {
       watch.isOn ? stopWhenOn() : watch.reset();
-    });
-
-    lapBtn.addEventListener("click", function () {
-      watch.isOn ? watch.lapOn() : watch.lapOff();
     });
   </script>
 </html>
