@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const defaultWidth = 10;
-const defaultHeight = 10;
+const defaultWidth = 30;
+const defaultHeight = 30;
 const minSize = 5;
-const maxSize = 25;
+const maxSize = 35;
 const nSquareToWin = 5;
 
 function Square(props) {
@@ -183,7 +183,7 @@ class Game extends React.Component {
     let moves = history.map((step, move) => {
       const desc = move ?
         'Go to move #' + move + ' (' + step.location.x + ',' + step.location.y + ')' :
-        'Go to game start';
+        'Bắt đầu (hoặc reset)';
       return (this.state.stepNumber === move) ? (
         <li key={move}>
           <button className="btn-bold" onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -234,8 +234,6 @@ class Game extends React.Component {
   }
 }
 
-// ========================================
-
 ReactDOM.render(
   <Game />,
   document.getElementById('root')
@@ -245,9 +243,6 @@ function calculateWinner(squares) {
   let win;
   for (let i = 0; i < squares.length; i++) {
     for (let j = 0; j < squares[i].length; j++) {
-      //Kiểm trang NSquareToWin ô liên tiếp từ ô xuất phát sang phải, xuống góc phải dưới, xuống góc trái dưới
-      //Nếu có NSquareToWin - 1 cặp liên tiếp giống nhau thì thắng
-      //Direction: ToRight, ToRightDown, ToDown, ToLeftDown
       if (!squares[i][j]) continue;
       if (j <= squares[i].length - nSquareToWin) {
         win = true;
