@@ -1,2 +1,1 @@
-# tesse-igen
-
+# simple-js-homework
