@@ -1,2 +1,2 @@
 # simple-js-homework
-Javacsript web
+Javascript web
